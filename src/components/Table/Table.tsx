@@ -23,9 +23,14 @@ const Table = () => {
 
   const handleClick = () => {
     changeItems([
+      { cost: 0, id: 4 },
       { cost: 0, id: 0 },
       { cost: 0, id: 1 },
+      { cost: 0, id: 7 },
       { cost: 0, id: 5 },
+      { cost: 0, id: 2 },
+      { cost: 0, id: 3 },
+      { cost: 0, id: 6 },
     ]);
   };
 
@@ -47,8 +52,8 @@ const Table = () => {
         Отфильтровать
       </TableButton>
       <Field>
-        {items.map((item) => [
-          item.id >= startValue && item.id < startValue + 4 && (
+        {items.map((item, index) => [
+          index >= startValue && index < startValue + 4 && (
             <Item key={item.id} cost={item.cost} point={item.id}></Item>
           ),
         ])}
