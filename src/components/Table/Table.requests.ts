@@ -39,7 +39,7 @@ export const filterPrice = async ({ filterString, changeItems }: Filter) => {
     },
     data: {
       action: "filter",
-      params: { price: filterString },
+      params: { price: Number(filterString) },
     },
   })
     .then(function (response) {
