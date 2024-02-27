@@ -5,6 +5,42 @@ const password = "Valantis_";
 let items: string[] = [];
 export let end: number;
 
+const deleteDublicates = (
+  array: {
+    brand: string;
+    id: string;
+    price: number;
+    product: string;
+  }[]
+) => {
+  const result = array.reduce(function (
+    acum: {
+      brand: string;
+      id: string;
+      price: number;
+      product: string;
+    }[],
+    item
+  ) {
+    let dublicate = false;
+    for (const iterator of acum) {
+      if (
+        iterator.product === item.product &&
+        iterator.price === item.price &&
+        iterator.brand === item.brand
+      ) {
+        dublicate = true;
+      }
+    }
+    if (dublicate) {
+      return acum;
+    } else {
+      return acum.concat(item);
+    }
+  }, []);
+  return result;
+};
+
 export const filterPrice = async (
   filterString: number,
   changeItems: React.Dispatch<
@@ -143,8 +179,6 @@ export const getInitialItems = async (
     .then(function (response) {
       items = response.data.result;
       getFields(changeItems);
-      console.log(response);
-      // changeItems(response.data.result);
     })
     .catch(function (error) {
       console.log(error);
@@ -179,9 +213,9 @@ export const getFields = async (
     },
   })
     .then(function (response) {
-      end = items.length;
-      changeItems(response.data.result);
-      console.log(response);
+      const result = deleteDublicates(response.data.result);
+      end = result.length;
+      changeItems(result);
     })
     .catch(function (error) {
       console.log(error);

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PAGE_STEP } from "./Table.constansts";
-import { end } from "./Table.requests";
+import { end, getInitialItems } from "./Table.requests";
 
 export const useStore = () => {
-  const [currentValue, setStartValue] = useState<number>(0);
+  const [currentValue, setCurrentValue] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<String>("price");
   const [items, changeItems] = useState([
     { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
@@ -23,18 +23,18 @@ export const useStore = () => {
     if (currentValue >= end - PAGE_STEP) {
       return;
     }
-    setStartValue(currentValue + PAGE_STEP);
+    setCurrentValue(currentValue + PAGE_STEP);
   };
   const backwardMove = () => {
     if (currentValue === 0) {
       return;
     }
-    setStartValue(currentValue - PAGE_STEP);
+    setCurrentValue(currentValue - PAGE_STEP);
   };
 
-  // useEffect(() => {
-  //   getInitialItems(changeItems);
-  // });
+  useEffect(() => {
+    getInitialItems(changeItems);
+  }, []);
 
   return {
     currentValue,

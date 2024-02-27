@@ -29,9 +29,6 @@ const Table = () => {
     forwardMove,
     backwardMove,
   } = useStore();
-  const handleIntitialItems = () => {
-    getInitialItems(changeItems);
-  };
   const handleClick = () => {
     switch (selectedOption) {
       case "brand":
@@ -47,17 +44,6 @@ const Table = () => {
         filterPrice(Number(inputValue), changeItems);
         break;
     }
-
-    // changeItems([
-    //   { cost: 0, id: 4 },
-    //   { cost: 0, id: 0 },
-    //   { cost: 0, id: 1 },
-    //   { cost: 0, id: 7 },
-    //   { cost: 0, id: 5 },
-    //   { cost: 0, id: 2 },
-    //   { cost: 0, id: 3 },
-    //   { cost: 0, id: 6 },
-    // ]);
   };
 
   return (
@@ -83,13 +69,12 @@ const Table = () => {
           onChange={(e) => setInputValue(e.target.value)}
           id="filterInput"
         />
-        <button onClick={handleIntitialItems}>создать 50</button>
       </FilterBlock>
       <Field>
         {items.map((item, index) => [
           index >= currentValue && index < currentValue + PAGE_STEP && (
             <Item
-              index={index}
+              index={index + 1}
               key={item.id}
               price={item.price}
               brand={item.brand}
