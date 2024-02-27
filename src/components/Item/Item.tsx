@@ -1,23 +1,18 @@
+import Circle from "../Circle/Circle";
 import Price from "../Price/Price";
-import {
-  Brand,
-  ItemWrapper,
-  Name,
-  PriceButtonField,
-  StyledCircle,
-} from "./Item.styled";
+import { Brand, ItemWrapper, Name, PriceButtonField } from "./Item.styled";
 import { ItemsProps } from "./Item.types";
 
-const Item = ({ cost, point }: ItemsProps) => {
+const Item = ({ index, brand, price, product }: ItemsProps) => {
   return (
     <ItemWrapper>
       <div>
-        <StyledCircle point={point}></StyledCircle>
+        <Circle index={index}></Circle>
       </div>
-      <Name>Кушида</Name>
-      <Brand>Добро пожаловать в класс преводсходства</Brand>
+      <Name>{product}</Name>
+      <Brand>{brand}</Brand>
       <PriceButtonField>
-        <Price cost={cost}></Price>
+        <Price price={price} />
       </PriceButtonField>
     </ItemWrapper>
   );

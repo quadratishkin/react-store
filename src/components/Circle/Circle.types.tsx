@@ -1,3 +1,3 @@
 export interface CircleProps {
-  point: number;
+  index: number;
 }

@@ -13,6 +13,11 @@ export const TableWrapper = styled.div`
   width: 80%;
 `;
 
+export const FilterBlock = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
 export const Field = styled.div`
   display: flex;
   justify-content: space-around;
@@ -36,19 +41,19 @@ export const TableButtonSelect = styled.select`
 `;
 
 export const TableButton = styled.button<{
-  buttonType: string;
-  currentValue: number;
+  buttontype: string;
+  currentvalue: number;
 }>`
   background-color: white;
   font-size: 30px;
   width: 250px;
   height: 70px;
-  cursor: ${({ buttonType, currentValue }) =>
-    getCursor(buttonType, currentValue)};
-  opacity: ${({ buttonType, currentValue }) =>
-    getOpacity(buttonType, currentValue)};
+  cursor: ${({ buttontype, currentvalue }) =>
+    getCursor(buttontype, currentvalue)};
+  opacity: ${({ buttontype, currentvalue }) =>
+    getOpacity(buttontype, currentvalue)};
   &:hover {
-    background-color: ${({ buttonType, currentValue }) =>
-      getHoverBackground(buttonType, currentValue)};
+    background-color: ${({ buttontype, currentvalue }) =>
+      getHoverBackground(buttontype, currentvalue)};
   }
 `;

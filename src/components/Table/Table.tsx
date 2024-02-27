@@ -1,18 +1,27 @@
 import {
   Buttons,
   Field,
+  FilterBlock,
   TableButton,
   TableButtonSelect,
   TableWrapper,
 } from "./Table.styled";
 import Item from "../Item/Item";
-import { useState } from "react";
 import { useStore } from "./Table.hooks";
+import { useState } from "react";
+import {
+  filterBrand,
+  filterName,
+  filterPrice,
+  getInitialItems,
+} from "./Table.requests";
+import { PAGE_STEP } from "./Table.constansts";
 
 const Table = () => {
+  const [inputValue, setInputValue] = useState("");
+
   const {
-    startValue,
-    setStartValue,
+    currentValue,
     selectedOption,
     selectChange,
     items,
@@ -20,18 +29,35 @@ const Table = () => {
     forwardMove,
     backwardMove,
   } = useStore();
-
+  const handleIntitialItems = () => {
+    getInitialItems(changeItems);
+  };
   const handleClick = () => {
-    changeItems([
-      { cost: 0, id: 4 },
-      { cost: 0, id: 0 },
-      { cost: 0, id: 1 },
-      { cost: 0, id: 7 },
-      { cost: 0, id: 5 },
-      { cost: 0, id: 2 },
-      { cost: 0, id: 3 },
-      { cost: 0, id: 6 },
-    ]);
+    switch (selectedOption) {
+      case "brand":
+        filterBrand(inputValue, changeItems);
+        break;
+      case "product":
+        filterName(inputValue, changeItems);
+        break;
+      default:
+        if (isNaN(Number(inputValue)) || inputValue === "") {
+          return;
+        }
+        filterPrice(Number(inputValue), changeItems);
+        break;
+    }
+
+    // changeItems([
+    //   { cost: 0, id: 4 },
+    //   { cost: 0, id: 0 },
+    //   { cost: 0, id: 1 },
+    //   { cost: 0, id: 7 },
+    //   { cost: 0, id: 5 },
+    //   { cost: 0, id: 2 },
+    //   { cost: 0, id: 3 },
+    //   { cost: 0, id: 6 },
+    // ]);
   };
 
   return (
@@ -40,36 +66,50 @@ const Table = () => {
         <option defaultValue={"DEFAULT"} disabled>
           Choose one
         </option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="green">Green</option>
+        <option value="price">Price</option>
+        <option value="product">Product</option>
+        <option value="brand">Brand</option>
       </TableButtonSelect>
-      <TableButton
-        buttonType="filter"
-        currentValue={startValue}
-        onClick={handleClick}
-      >
-        Отфильтровать
-      </TableButton>
+      <FilterBlock>
+        <TableButton
+          currentvalue={currentValue}
+          onClick={handleClick}
+          buttontype="filter"
+        >
+          Отфильтровать
+        </TableButton>
+        <input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          id="filterInput"
+        />
+        <button onClick={handleIntitialItems}>создать 50</button>
+      </FilterBlock>
       <Field>
         {items.map((item, index) => [
-          index >= startValue && index < startValue + 4 && (
-            <Item key={item.id} cost={item.cost} point={item.id}></Item>
+          index >= currentValue && index < currentValue + PAGE_STEP && (
+            <Item
+              index={index}
+              key={item.id}
+              price={item.price}
+              brand={item.brand}
+              product={item.product}
+            />
           ),
         ])}
       </Field>
       <Buttons>
         <TableButton
           onClick={backwardMove}
-          buttonType="backward"
-          currentValue={startValue}
+          currentvalue={currentValue}
+          buttontype="backward"
         >
           назад
         </TableButton>
         <TableButton
           onClick={forwardMove}
-          buttonType="forward"
-          currentValue={startValue}
+          currentvalue={currentValue}
+          buttontype="forward"
         >
           вперёд
         </TableButton>

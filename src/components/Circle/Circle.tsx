@@ -1,10 +1,8 @@
 import { CircleWrapper } from "./Circle.styled";
 import { CircleProps } from "./Circle.types";
 
-const Circle = ({ point }: CircleProps) => (
-  <CircleWrapper>
-    <div>{point}</div>
-  </CircleWrapper>
+const Circle = ({ index }: CircleProps) => (
+  <CircleWrapper>{index}</CircleWrapper>
 );
 
 export default Circle;

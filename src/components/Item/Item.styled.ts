@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Circle from "../Circle/Circle";
 
 export const ItemWrapper = styled.div`
   border-radius: 10px;
+  min-width: 200px;
   padding: 10px;
   flex-basis: 15%;
   display: flex;
@@ -13,17 +13,11 @@ export const ItemWrapper = styled.div`
 
 export const Name = styled.div`
   text-align: center;
-  font-size: 36px;
+  font-size: 18px;
 `;
 
 export const Brand = styled.div`
-  font-size: 22px;
-`;
-
-export const StyledCircle = styled(Circle)`
-  position: absolute;
-  left: 5px;
-  top: 5px;
+  font-size: 14px;
 `;
 
 export const PriceButtonField = styled.div`

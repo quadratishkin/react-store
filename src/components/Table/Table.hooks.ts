@@ -1,38 +1,43 @@
 import { useState } from "react";
+import { PAGE_STEP } from "./Table.constansts";
+import { end } from "./Table.requests";
 
 export const useStore = () => {
-  const [startValue, setStartValue] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<String>("");
+  const [currentValue, setStartValue] = useState<number>(0);
+  const [selectedOption, setSelectedOption] = useState<String>("price");
   const [items, changeItems] = useState([
-    { cost: 0, id: 0 },
-    { cost: 0, id: 1 },
-    { cost: 0, id: 2 },
-    { cost: 0, id: 3 },
-    { cost: 0, id: 4 },
-    { cost: 0, id: 5 },
-    { cost: 0, id: 6 },
-    { cost: 0, id: 7 },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
+    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
   ]);
   const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setSelectedOption(value);
   };
   const forwardMove = () => {
-    if (startValue === 4) {
+    if (currentValue >= end - PAGE_STEP) {
       return;
     }
-    setStartValue(startValue + 1);
+    setStartValue(currentValue + PAGE_STEP);
   };
   const backwardMove = () => {
-    if (startValue === 0) {
+    if (currentValue === 0) {
       return;
     }
-    setStartValue(startValue - 1);
+    setStartValue(currentValue - PAGE_STEP);
   };
 
+  // useEffect(() => {
+  //   getInitialItems(changeItems);
+  // });
+
   return {
-    startValue,
-    setStartValue,
+    currentValue,
     selectedOption,
     selectChange,
     items,
