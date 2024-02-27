@@ -31,6 +31,7 @@ export const Buttons = styled.div`
 `;
 
 export const TableButtonSelect = styled.select`
+  padding: 5px;
   font-size: 30px;
   width: 250px;
   height: 70px;

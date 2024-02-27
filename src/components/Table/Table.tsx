@@ -48,7 +48,7 @@ const Table = () => {
 
   return (
     <TableWrapper>
-      <TableButtonSelect onChange={selectChange} style={styles.select}>
+      <TableButtonSelect onChange={selectChange}>
         <option defaultValue={"DEFAULT"} disabled>
           Choose one
         </option>
@@ -101,22 +101,6 @@ const Table = () => {
       </Buttons>
     </TableWrapper>
   );
-};
-
-const styles: { [name: string]: React.CSSProperties } = {
-  container: {
-    marginTop: 50,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  select: {
-    padding: 5,
-    width: 200,
-  },
-  result: {
-    marginTop: 30,
-  },
 };
 
 export default Table;
