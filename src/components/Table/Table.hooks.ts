@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
-import { PAGE_STEP } from "./Table.constansts";
+import { INITIAL_ITEMS, PAGE_STEP } from "./Table.constansts";
 import { end, getInitialItems } from "./Table.requests";
 
 export const useStore = () => {
-  const [currentValue, setCurrentValue] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<String>("price");
-  const [items, changeItems] = useState([
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-    { brand: "Baraka", id: "0", price: 0, product: "Кушида" },
-  ]);
+  const [currentValue, setCurrentValue] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("price");
+  const [items, changeItems] = useState(INITIAL_ITEMS);
   const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setSelectedOption(value);

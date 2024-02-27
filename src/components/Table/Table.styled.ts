@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { getCursor, getHoverBackground, getOpacity } from "./Table.utils";
 
-export const TableWrapper = styled.div`
+export const StyledTableWrapper = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -13,24 +13,24 @@ export const TableWrapper = styled.div`
   width: 80%;
 `;
 
-export const FilterBlock = styled.div`
+export const StyledFilterBlock = styled.div`
   display: flex;
   gap: 40px;
 `;
 
-export const Field = styled.div`
+export const StyledField = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 30px;
   flex-wrap: wrap;
 `;
 
-export const Buttons = styled.div`
+export const StyledButtons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const TableButtonSelect = styled.select`
+export const StyledTableButtonSelect = styled.select`
   padding: 5px;
   font-size: 30px;
   width: 250px;
@@ -41,7 +41,7 @@ export const TableButtonSelect = styled.select`
   }
 `;
 
-export const TableButton = styled.button<{
+export const StyledTableButton = styled.button<{
   buttontype: string;
   currentvalue: number;
 }>`

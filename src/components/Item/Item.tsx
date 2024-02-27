@@ -1,20 +1,25 @@
-import Circle from "../Circle/Circle";
 import Price from "../Price/Price";
-import { Brand, ItemWrapper, Name, PriceButtonField } from "./Item.styled";
+import {
+  StyledBrand,
+  StyledCircleWrapper,
+  StyledItemWrapper,
+  StyledName,
+  StyledPriceButtonField,
+} from "./Item.styled";
 import { ItemsProps } from "./Item.types";
 
 const Item = ({ index, brand, price, product }: ItemsProps) => {
   return (
-    <ItemWrapper>
+    <StyledItemWrapper>
       <div>
-        <Circle index={index}></Circle>
+        <StyledCircleWrapper>{index}</StyledCircleWrapper>
       </div>
-      <Name>{product}</Name>
-      <Brand>{brand}</Brand>
-      <PriceButtonField>
+      <StyledName>{product}</StyledName>
+      <StyledBrand>{brand}</StyledBrand>
+      <StyledPriceButtonField>
         <Price price={price} />
-      </PriceButtonField>
-    </ItemWrapper>
+      </StyledPriceButtonField>
+    </StyledItemWrapper>
   );
 };
 

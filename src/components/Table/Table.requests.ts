@@ -1,27 +1,13 @@
 import axios from "axios";
 import { Md5 } from "ts-md5";
+import { Filter, RequestItem } from "./Table.types";
 
 const password = "Valantis_";
 let items: string[] = [];
 export let end: number;
 
-const deleteDublicates = (
-  array: {
-    brand: string;
-    id: string;
-    price: number;
-    product: string;
-  }[]
-) => {
-  const result = array.reduce(function (
-    acum: {
-      brand: string;
-      id: string;
-      price: number;
-      product: string;
-    }[],
-    item
-  ) {
+const deleteDublicates = (array: RequestItem[]) => {
+  const result = array.reduce(function (acum: RequestItem[], item) {
     let dublicate = false;
     for (const iterator of acum) {
       if (
@@ -41,19 +27,7 @@ const deleteDublicates = (
   return result;
 };
 
-export const filterPrice = async (
-  filterString: number,
-  changeItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        brand: string;
-        id: string;
-        price: number;
-        product: string;
-      }[]
-    >
-  >
-) => {
+export const filterPrice = async ({ filterString, changeItems }: Filter) => {
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -77,19 +51,7 @@ export const filterPrice = async (
     });
 };
 
-export const filterName = async (
-  filterString: string,
-  changeItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        brand: string;
-        id: string;
-        price: number;
-        product: string;
-      }[]
-    >
-  >
-) => {
+export const filterName = async ({ filterString, changeItems }: Filter) => {
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -113,19 +75,7 @@ export const filterName = async (
     });
 };
 
-export const filterBrand = async (
-  filterString: string,
-  changeItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        brand: string;
-        id: string;
-        price: number;
-        product: string;
-      }[]
-    >
-  >
-) => {
+export const filterBrand = async ({ filterString, changeItems }: Filter) => {
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];

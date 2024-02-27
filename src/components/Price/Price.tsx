@@ -1,6 +1,8 @@
-import { PriceWrapper } from "./Price.styled";
+import { StyledPriceWrapper } from "./Price.styled";
 import { PriceProps } from "./Price.types";
 
-const Price = ({ price }: PriceProps) => <PriceWrapper>{price}</PriceWrapper>;
+const Price = ({ price }: PriceProps) => (
+  <StyledPriceWrapper>{price}</StyledPriceWrapper>
+);
 
 export default Price;

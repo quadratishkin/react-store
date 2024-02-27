@@ -1,24 +1,19 @@
-import {
-  Buttons,
-  Field,
-  FilterBlock,
-  TableButton,
-  TableButtonSelect,
-  TableWrapper,
-} from "./Table.styled";
 import Item from "../Item/Item";
 import { useStore } from "./Table.hooks";
 import { useState } from "react";
-import {
-  filterBrand,
-  filterName,
-  filterPrice,
-  getInitialItems,
-} from "./Table.requests";
+import { filterBrand, filterName, filterPrice } from "./Table.requests";
 import { PAGE_STEP } from "./Table.constansts";
+import {
+  StyledButtons,
+  StyledField,
+  StyledFilterBlock,
+  StyledTableButton,
+  StyledTableButtonSelect,
+  StyledTableWrapper,
+} from "./Table.styled";
 
 const Table = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [filterString, setInputValue] = useState("");
 
   const {
     currentValue,
@@ -32,45 +27,45 @@ const Table = () => {
   const handleClick = () => {
     switch (selectedOption) {
       case "brand":
-        filterBrand(inputValue, changeItems);
+        filterBrand({ filterString, changeItems });
         break;
       case "product":
-        filterName(inputValue, changeItems);
+        filterName({ filterString, changeItems });
         break;
       default:
-        if (isNaN(Number(inputValue)) || inputValue === "") {
+        if (isNaN(Number(filterString)) || filterString === "") {
           return;
         }
-        filterPrice(Number(inputValue), changeItems);
+        filterPrice({ filterString, changeItems });
         break;
     }
   };
 
   return (
-    <TableWrapper>
-      <TableButtonSelect onChange={selectChange}>
+    <StyledTableWrapper>
+      <StyledTableButtonSelect onChange={selectChange}>
         <option defaultValue={"DEFAULT"} disabled>
           Choose one
         </option>
         <option value="price">Price</option>
         <option value="product">Product</option>
         <option value="brand">Brand</option>
-      </TableButtonSelect>
-      <FilterBlock>
-        <TableButton
+      </StyledTableButtonSelect>
+      <StyledFilterBlock>
+        <StyledTableButton
           currentvalue={currentValue}
           onClick={handleClick}
           buttontype="filter"
         >
           Отфильтровать
-        </TableButton>
+        </StyledTableButton>
         <input
-          value={inputValue}
+          value={filterString}
           onChange={(e) => setInputValue(e.target.value)}
           id="filterInput"
         />
-      </FilterBlock>
-      <Field>
+      </StyledFilterBlock>
+      <StyledField>
         {items.map((item, index) => [
           index >= currentValue && index < currentValue + PAGE_STEP && (
             <Item
@@ -82,24 +77,24 @@ const Table = () => {
             />
           ),
         ])}
-      </Field>
-      <Buttons>
-        <TableButton
+      </StyledField>
+      <StyledButtons>
+        <StyledTableButton
           onClick={backwardMove}
           currentvalue={currentValue}
           buttontype="backward"
         >
           назад
-        </TableButton>
-        <TableButton
+        </StyledTableButton>
+        <StyledTableButton
           onClick={forwardMove}
           currentvalue={currentValue}
           buttontype="forward"
         >
           вперёд
-        </TableButton>
-      </Buttons>
-    </TableWrapper>
+        </StyledTableButton>
+      </StyledButtons>
+    </StyledTableWrapper>
   );
 };
 
