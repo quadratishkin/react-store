@@ -24,7 +24,7 @@ export const useStore = () => {
   };
 
   useEffect(() => {
-    getInitialItems(changeItems);
+    getInitialItems({changeItems});
   }, []);
 
   return {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Md5 } from "ts-md5";
-import { Filter, RequestItem } from "./Table.types";
+import { Request, RequestItem } from "./Table.types";
 
 const password = "Valantis_";
 let items: string[] = [];
@@ -27,7 +27,8 @@ const deleteDublicates = (array: RequestItem[]) => {
   return result;
 };
 
-export const filterPrice = async ({ filterString, changeItems }: Filter) => {
+export const filterPrice = async ({ filterString, changeItems }: Request) => {
+  let tryNumber = 0;
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -44,14 +45,20 @@ export const filterPrice = async ({ filterString, changeItems }: Filter) => {
   })
     .then(function (response) {
       items = response.data.result;
-      getFields(changeItems);
+      getFields({ changeItems });
     })
     .catch(function (error) {
-      console.log(error);
+      if (tryNumber === 3) {
+        console.log(error);
+      } else {
+        tryNumber++;
+        filterPrice({ filterString, changeItems });
+      }
     });
 };
 
-export const filterName = async ({ filterString, changeItems }: Filter) => {
+export const filterName = async ({ filterString, changeItems }: Request) => {
+  let tryNumber = 0;
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -68,14 +75,20 @@ export const filterName = async ({ filterString, changeItems }: Filter) => {
   })
     .then(function (response) {
       items = response.data.result;
-      getFields(changeItems);
+      getFields({ changeItems });
     })
     .catch(function (error) {
-      console.log(error);
+      if (tryNumber === 3) {
+        console.log(error);
+      } else {
+        tryNumber++;
+        filterName({ filterString, changeItems });
+      }
     });
 };
 
-export const filterBrand = async ({ filterString, changeItems }: Filter) => {
+export const filterBrand = async ({ filterString, changeItems }: Request) => {
+  let tryNumber = 0;
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -92,25 +105,20 @@ export const filterBrand = async ({ filterString, changeItems }: Filter) => {
   })
     .then(function (response) {
       items = response.data.result;
-      getFields(changeItems);
+      getFields({ changeItems });
     })
     .catch(function (error) {
-      console.log(error);
+      if (tryNumber === 3) {
+        console.log(error);
+      } else {
+        tryNumber++;
+        filterBrand({ filterString, changeItems });
+      }
     });
 };
 
-export const getInitialItems = async (
-  changeItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        brand: string;
-        id: string;
-        price: number;
-        product: string;
-      }[]
-    >
-  >
-) => {
+export const getInitialItems = async ({ changeItems }: Request) => {
+  let tryNumber = 0;
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -128,25 +136,20 @@ export const getInitialItems = async (
   })
     .then(function (response) {
       items = response.data.result;
-      getFields(changeItems);
+      getFields({ changeItems });
     })
     .catch(function (error) {
-      console.log(error);
+      if (tryNumber === 3) {
+        console.log(error);
+      } else {
+        tryNumber++;
+        getInitialItems({ changeItems });
+      }
     });
 };
 
-export const getFields = async (
-  changeItems: React.Dispatch<
-    React.SetStateAction<
-      {
-        brand: string;
-        id: string;
-        price: number;
-        product: string;
-      }[]
-    >
-  >
-) => {
+export const getFields = async ({ changeItems }: Request) => {
+  let tryNumber = 0;
   const now = new Date().toISOString().split("T")[0];
   const nowRightFormat =
     now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -168,6 +171,11 @@ export const getFields = async (
       changeItems(result);
     })
     .catch(function (error) {
-      console.log(error);
+      if (tryNumber === 3) {
+        console.log(error);
+      } else {
+        tryNumber++;
+        getFields({ changeItems });
+      }
     });
 };

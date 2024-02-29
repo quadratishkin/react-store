@@ -5,7 +5,7 @@ export interface RequestItem {
   product: string;
 }
 
-export interface Filter {
-  filterString: string | number;
+export interface Request {
+  filterString?: string | number;
   changeItems: React.Dispatch<React.SetStateAction<RequestItem[]>>;
 }
