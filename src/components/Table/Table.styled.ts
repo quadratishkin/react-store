@@ -8,7 +8,6 @@ export const StyledTableWrapper = styled.div`
   gap: 30px;
   margin-inline: 10%;
   padding-block-end: 70px;
-  background-color: white;
   color: black;
   width: 80%;
 `;

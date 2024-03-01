@@ -42,6 +42,7 @@ const Table = () => {
   };
 
   return (
+    
     <StyledTableWrapper>
       <StyledTableButtonSelect onChange={selectChange}>
         <option defaultValue={"DEFAULT"} disabled>
