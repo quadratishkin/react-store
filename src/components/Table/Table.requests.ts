@@ -29,7 +29,7 @@ const deleteDublicates = (array: RequestItem[]) => {
 
 export const filterPrice = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
-  async function request() {
+  const request = async () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -56,13 +56,13 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
           request();
         }
       });
-  }
+  };
   request();
 };
 
 export const filterName = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
-  async function request() {
+  const request = async () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -89,14 +89,14 @@ export const filterName = ({ filterString, changeItems }: Request) => {
           request();
         }
       });
-  }
+  };
   request();
 };
 
 export const filterBrand = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
 
-  async function request() {
+  const request = async () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -123,14 +123,14 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
           request();
         }
       });
-  }
+  };
   request();
 };
 
 export const getInitialItems = ({ changeItems }: Request) => {
   let tryNumber = 0;
 
-  async function request() {
+  const request = async () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -158,13 +158,13 @@ export const getInitialItems = ({ changeItems }: Request) => {
           request();
         }
       });
-  }
+  };
   request();
 };
 
 export const getFields = ({ changeItems }: Request) => {
   let tryNumber = 0;
-  async function request() {
+  const request = async () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
@@ -193,6 +193,6 @@ export const getFields = ({ changeItems }: Request) => {
           request();
         }
       });
-  }
+  };
   request();
 };
