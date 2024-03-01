@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Md5 } from "ts-md5";
 import { Request, RequestItem } from "./Table.types";
-import { request } from "http";
 
 const password = "Valantis_";
 let items: string[] = [];
@@ -94,7 +93,7 @@ export const filterName = ({ filterString, changeItems }: Request) => {
   request();
 };
 
-export const filterBrand = async ({ filterString, changeItems }: Request) => {
+export const filterBrand = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
 
   async function request() {
