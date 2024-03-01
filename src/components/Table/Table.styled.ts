@@ -19,7 +19,7 @@ export const StyledFilterBlock = styled.div`
 
 export const StyledField = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
 `;
@@ -46,7 +46,8 @@ export const StyledTableButtonSelect = styled.select`
 `;
 
 export const StyledInput = styled.input`
-  font-size: 30px;
+  min-width: 250px;
+  font-size: 14px;
   padding: 5px;
 `;
 
