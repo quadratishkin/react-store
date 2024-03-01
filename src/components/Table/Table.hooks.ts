@@ -4,18 +4,15 @@ import { end, getInitialItems } from "./Table.requests";
 
 export const useStore = () => {
   const [currentValue, setCurrentValue] = useState(0);
-  const [selectedOption, setSelectedOption] = useState("price");
   const [items, changeItems] = useState(INITIAL_ITEMS);
-  const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    setSelectedOption(value);
-  };
+
   const forwardMove = () => {
     if (currentValue >= end - PAGE_STEP) {
       return;
     }
     setCurrentValue(currentValue + PAGE_STEP);
   };
+
   const backwardMove = () => {
     if (currentValue === 0) {
       return;
@@ -24,16 +21,34 @@ export const useStore = () => {
   };
 
   useEffect(() => {
-    getInitialItems({changeItems});
+    getInitialItems({ changeItems });
   }, []);
 
   return {
     currentValue,
-    selectedOption,
-    selectChange,
     items,
     changeItems,
     forwardMove,
     backwardMove,
+  };
+};
+
+export const useFilter = () => {
+  const [filterString, setInputValue] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("price");
+
+  const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+  };
+
+  return {
+    filterString,
+    setInputValue,
+    isError,
+    setIsError,
+    selectedOption,
+    selectChange,
   };
 };

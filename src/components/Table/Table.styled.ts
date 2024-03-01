@@ -29,7 +29,12 @@ export const StyledButtons = styled.div`
   justify-content: space-between;
 `;
 
+export const ErrorElem = styled.div`
+  color: red;
+`;
+
 export const StyledTableButtonSelect = styled.select`
+  background-color: white;
   padding: 5px;
   font-size: 30px;
   width: 250px;
@@ -38,6 +43,11 @@ export const StyledTableButtonSelect = styled.select`
   &:hover {
     background-color: lightgray;
   }
+`;
+
+export const StyledInput = styled.input`
+  font-size: 30px;
+  padding: 5px;
 `;
 
 export const StyledTableButton = styled.button<{

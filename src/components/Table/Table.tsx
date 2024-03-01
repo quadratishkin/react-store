@@ -1,58 +1,66 @@
 import Item from "../Item/Item";
-import { useStore } from "./Table.hooks";
-import { useState } from "react";
+import { useFilter, useStore } from "./Table.hooks";
 import { filterBrand, filterName, filterPrice } from "./Table.requests";
 import { PAGE_STEP } from "./Table.constansts";
 import {
+  ErrorElem,
   StyledButtons,
   StyledField,
   StyledFilterBlock,
+  StyledInput,
   StyledTableButton,
   StyledTableButtonSelect,
   StyledTableWrapper,
 } from "./Table.styled";
 
 const Table = () => {
-  const [filterString, setInputValue] = useState("");
-
   const {
-    currentValue,
+    filterString,
+    setInputValue,
+    isError,
+    setIsError,
     selectedOption,
     selectChange,
-    items,
-    changeItems,
-    forwardMove,
-    backwardMove,
-  } = useStore();
+  } = useFilter();
+  const { currentValue, items, changeItems, forwardMove, backwardMove } =
+    useStore();
   const handleClick = () => {
     switch (selectedOption) {
       case "brand":
+        setIsError(false);
         filterBrand({ filterString, changeItems });
         break;
       case "product":
+        setIsError(false);
         filterName({ filterString, changeItems });
         break;
       default:
         if (isNaN(Number(filterString)) || filterString === "") {
+          setIsError(true);
           return;
         }
+        setIsError(false);
         filterPrice({ filterString, changeItems });
         break;
     }
   };
 
   return (
-    
     <StyledTableWrapper>
-      <StyledTableButtonSelect onChange={selectChange}>
-        <option defaultValue={"DEFAULT"} disabled>
-          Choose one
-        </option>
-        <option value="price">Price</option>
-        <option value="product">Product</option>
-        <option value="brand">Brand</option>
-      </StyledTableButtonSelect>
       <StyledFilterBlock>
+        <StyledTableButtonSelect onChange={selectChange}>
+          <option defaultValue={"DEFAULT"} disabled>
+            Choose one
+          </option>
+          <option value="price">Price</option>
+          <option value="product">Product</option>
+          <option value="brand">Brand</option>
+        </StyledTableButtonSelect>
+        <StyledInput
+          value={filterString}
+          onChange={(e) => setInputValue(e.target.value)}
+          id="filterInput"
+        />
         <StyledTableButton
           currentvalue={currentValue}
           onClick={handleClick}
@@ -60,12 +68,10 @@ const Table = () => {
         >
           Отфильтровать
         </StyledTableButton>
-        <input
-          value={filterString}
-          onChange={(e) => setInputValue(e.target.value)}
-          id="filterInput"
-        />
       </StyledFilterBlock>
+
+      {isError && <ErrorElem>Введённое значение не коректно</ErrorElem>}
+      {items.length === 0 && <ErrorElem>Ничего не найдено</ErrorElem>}
       <StyledField>
         {items.map((item, index) => [
           index >= currentValue && index < currentValue + PAGE_STEP && (

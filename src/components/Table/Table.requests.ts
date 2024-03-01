@@ -29,11 +29,11 @@ const deleteDublicates = (array: RequestItem[]) => {
 
 export const filterPrice = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
-  const request = async () => {
+  const request = () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
-    await axios({
+    axios({
       method: "post",
       url: "http://api.valantis.store:40000/",
       headers: {
@@ -62,11 +62,11 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
 
 export const filterName = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
-  const request = async () => {
+  const request = () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
-    await axios({
+    axios({
       method: "post",
       url: "http://api.valantis.store:40000/",
       headers: {
@@ -96,11 +96,11 @@ export const filterName = ({ filterString, changeItems }: Request) => {
 export const filterBrand = ({ filterString, changeItems }: Request) => {
   let tryNumber = 0;
 
-  const request = async () => {
+  const request = () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
-    await axios({
+    axios({
       method: "post",
       url: "http://api.valantis.store:40000/",
       headers: {
@@ -130,12 +130,12 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
 export const getInitialItems = ({ changeItems }: Request) => {
   let tryNumber = 0;
 
-  const request = async () => {
+  const request = () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
 
-    await axios({
+    axios({
       method: "post",
       url: "http://api.valantis.store:40000/",
       headers: {
@@ -164,12 +164,12 @@ export const getInitialItems = ({ changeItems }: Request) => {
 
 export const getFields = ({ changeItems }: Request) => {
   let tryNumber = 0;
-  const request = async () => {
+  const request = () => {
     const now = new Date().toISOString().split("T")[0];
     const nowRightFormat =
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
 
-    await axios({
+    axios({
       method: "post",
       url: "http://api.valantis.store:40000/",
       headers: {
