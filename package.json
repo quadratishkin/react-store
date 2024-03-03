@@ -1,5 +1,5 @@
 {
-  "homegape": "./quadratishkin.github.io/react-store",
+  "homegape": "https://quadratishkin.github.io/react-store",
   "name": "test-store-react",
   "version": "0.1.0",
   "private": true,
