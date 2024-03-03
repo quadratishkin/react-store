@@ -4,6 +4,10 @@ import { Request, RequestItem } from "./Table.types";
 
 const password = "Valantis_";
 let items: string[] = [];
+const myError = (msg: string) => {
+  console.log("%c" + msg, "color: red; font-weight:bold;");
+};
+
 export let end: number;
 
 const deleteDublicates = (array: RequestItem[]) => {
@@ -50,11 +54,11 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
       })
       .catch(function (error) {
         if (tryNumber === 3) {
-          console.log(error);
-        } else {
-          tryNumber++;
-          request();
+          return;
         }
+        myError(error.message);
+        tryNumber++;
+        request();
       });
   };
   request();
@@ -83,11 +87,11 @@ export const filterName = ({ filterString, changeItems }: Request) => {
       })
       .catch(function (error) {
         if (tryNumber === 3) {
-          console.log(error);
-        } else {
-          tryNumber++;
-          request();
+          return;
         }
+        myError(error.message);
+        tryNumber++;
+        request();
       });
   };
   request();
@@ -117,11 +121,11 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
       })
       .catch(function (error) {
         if (tryNumber === 3) {
-          console.log(error);
-        } else {
-          tryNumber++;
-          request();
+          return;
         }
+        myError(error.message);
+        tryNumber++;
+        request();
       });
   };
   request();
@@ -152,11 +156,11 @@ export const getInitialItems = ({ changeItems }: Request) => {
       })
       .catch(function (error) {
         if (tryNumber === 3) {
-          console.log(error);
-        } else {
-          tryNumber++;
-          request();
+          return;
         }
+        myError(error.message);
+        tryNumber++;
+        request();
       });
   };
   request();
@@ -187,11 +191,11 @@ export const getFields = ({ changeItems }: Request) => {
       })
       .catch(function (error) {
         if (tryNumber === 3) {
-          console.log(error);
-        } else {
-          tryNumber++;
-          request();
+          return;
         }
+        myError(error.message);
+        tryNumber++;
+        request();
       });
   };
   request();
