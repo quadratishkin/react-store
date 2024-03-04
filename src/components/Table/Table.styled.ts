@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { getCursor, getHoverBackground, getOpacity } from "./Table.utils";
 
-
 export const StyledTableWrapper = styled.div`
   padding: 10px;
   display: flex;
@@ -13,10 +12,10 @@ export const StyledTableWrapper = styled.div`
   width: 80%;
 `;
 
-export const StyledFilterBlock = styled.div<{ windowWidth: number }>`
+export const StyledFilterBlock = styled.div<{ windowwidth: number }>`
   display: flex;
-  flex-direction: ${({ windowWidth }) =>
-    windowWidth < 900 ? "column" : "row"};
+  flex-direction: ${({ windowwidth }) =>
+    windowwidth < 900 ? "column" : "row"};
   gap: 40px;
 `;
 

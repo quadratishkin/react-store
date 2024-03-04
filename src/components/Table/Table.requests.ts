@@ -39,7 +39,7 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
     axios({
       method: "post",
-      url: "http://api.valantis.store:40000/",
+      url: "https://api.valantis.store:41000/",
       headers: {
         "X-Auth": Md5.hashStr(`${password}${nowRightFormat}`),
       },
@@ -72,7 +72,7 @@ export const filterName = ({ filterString, changeItems }: Request) => {
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
     axios({
       method: "post",
-      url: "http://api.valantis.store:40000/",
+      url: "https://api.valantis.store:41000/",
       headers: {
         "X-Auth": Md5.hashStr(`${password}${nowRightFormat}`),
       },
@@ -106,7 +106,7 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
       now.split("-")[0] + now.split("-")[1] + now.split("-")[2];
     axios({
       method: "post",
-      url: "http://api.valantis.store:40000/",
+      url: "https://api.valantis.store:41000/",
       headers: {
         "X-Auth": Md5.hashStr(`${password}${nowRightFormat}`),
       },
@@ -141,7 +141,7 @@ export const getInitialItems = ({ changeItems }: Request) => {
 
     axios({
       method: "post",
-      url: "http://api.valantis.store:40000/",
+      url: "https://api.valantis.store:41000/",
       headers: {
         "X-Auth": Md5.hashStr(`${password}${nowRightFormat}`),
       },
@@ -175,7 +175,7 @@ export const getFields = ({ changeItems }: Request) => {
 
     axios({
       method: "post",
-      url: "http://api.valantis.store:40000/",
+      url: "https://api.valantis.store:41000/",
       headers: {
         "X-Auth": Md5.hashStr(`${password}${nowRightFormat}`),
       },

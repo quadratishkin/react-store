@@ -5,7 +5,7 @@ import { end, getInitialItems } from "./Table.requests";
 export const useStore = () => {
   const [currentValue, setCurrentValue] = useState(0);
   const [items, changeItems] = useState(INITIAL_ITEMS);
-  const [windowWidth, setWidth] = useState(window.innerWidth);
+  const [windowwidth, setWidth] = useState(window.innerWidth);
 
   const forwardMove = () => {
     if (currentValue >= end - PAGE_STEP) {
@@ -25,7 +25,7 @@ export const useStore = () => {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
-    
+
     window.addEventListener("resize", handleResize);
 
     getInitialItems({ changeItems });
@@ -41,7 +41,7 @@ export const useStore = () => {
     changeItems,
     forwardMove,
     backwardMove,
-    windowWidth,
+    windowwidth,
   };
 };
 

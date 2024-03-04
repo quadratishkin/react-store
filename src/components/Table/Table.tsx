@@ -29,7 +29,7 @@ const Table = () => {
     changeItems,
     forwardMove,
     backwardMove,
-    windowWidth,
+    windowwidth,
   } = useStore();
   const handleClick = () => {
     switch (selectedOption) {
@@ -54,7 +54,7 @@ const Table = () => {
 
   return (
     <StyledTableWrapper>
-      <StyledFilterBlock windowWidth={windowWidth}>
+      <StyledFilterBlock windowwidth={windowwidth}>
         <StyledTableButtonSelect onChange={selectChange}>
           <option defaultValue={"DEFAULT"} disabled>
             Choose one
