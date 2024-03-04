@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { getCursor, getHoverBackground, getOpacity } from "./Table.utils";
 
+
 export const StyledTableWrapper = styled.div`
   padding: 10px;
   display: flex;
@@ -12,8 +13,10 @@ export const StyledTableWrapper = styled.div`
   width: 80%;
 `;
 
-export const StyledFilterBlock = styled.div`
+export const StyledFilterBlock = styled.div<{ windowWidth: number }>`
   display: flex;
+  flex-direction: ${({ windowWidth }) =>
+    windowWidth < 900 ? "column" : "row"};
   gap: 40px;
 `;
 
@@ -38,7 +41,7 @@ export const StyledTableButtonSelect = styled.select`
   padding: 5px;
   font-size: 30px;
   width: 250px;
-  height: 70px;
+  height: 50px;
   cursor: pointer;
   &:hover {
     background-color: lightgray;
@@ -46,9 +49,9 @@ export const StyledTableButtonSelect = styled.select`
 `;
 
 export const StyledInput = styled.input`
-  min-width: 250px;
+  width: 245px;
+  height: 45px;
   font-size: 14px;
-  padding: 5px;
 `;
 
 export const StyledTableButton = styled.button<{
@@ -58,7 +61,7 @@ export const StyledTableButton = styled.button<{
   background-color: white;
   font-size: 30px;
   width: 250px;
-  height: 70px;
+  height: 50px;
   cursor: ${({ buttontype, currentvalue }) =>
     getCursor(buttontype, currentvalue)};
   opacity: ${({ buttontype, currentvalue }) =>

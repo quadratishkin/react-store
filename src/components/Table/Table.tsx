@@ -1,7 +1,8 @@
-import Item from "../Item/Item";
+import Item from "../item/Item";
+import { PAGE_STEP } from "./Table.constansts";
+
 import { useFilter, useStore } from "./Table.hooks";
 import { filterBrand, filterName, filterPrice } from "./Table.requests";
-import { PAGE_STEP } from "./Table.constansts";
 import {
   ErrorElem,
   StyledButtons,
@@ -22,8 +23,14 @@ const Table = () => {
     selectedOption,
     selectChange,
   } = useFilter();
-  const { currentValue, items, changeItems, forwardMove, backwardMove } =
-    useStore();
+  const {
+    currentValue,
+    items,
+    changeItems,
+    forwardMove,
+    backwardMove,
+    windowWidth,
+  } = useStore();
   const handleClick = () => {
     switch (selectedOption) {
       case "brand":
@@ -47,7 +54,7 @@ const Table = () => {
 
   return (
     <StyledTableWrapper>
-      <StyledFilterBlock>
+      <StyledFilterBlock windowWidth={windowWidth}>
         <StyledTableButtonSelect onChange={selectChange}>
           <option defaultValue={"DEFAULT"} disabled>
             Choose one
