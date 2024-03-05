@@ -108,7 +108,7 @@ const Table = () => {
             index % 50 === 0 && (
               <StyledPageNumber
                 onClick={() => handelPageNumberClick(Math.floor(index / 50))}
-                iscurrentpage={index === currentValue}
+                iscurrentpage={(index === currentValue).toString()}
                 key={index}
               >
                 {Math.floor(index / 50) + 1}

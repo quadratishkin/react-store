@@ -33,12 +33,12 @@ export const StyledContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const StyledPageNumber = styled.button<{ iscurrentpage: boolean }>`
+export const StyledPageNumber = styled.button<{ iscurrentpage: string }>`
   width: 60px;
   gap: 5px;
   background-color: transparent;
   border: ${({ iscurrentpage }) =>
-    iscurrentpage ? "2px solid black" : "none"};
+    iscurrentpage === "true" ? "2px solid black" : "none"};
   font-size: 24px;
   cursor: pointer;
   opacity: 0.8;
