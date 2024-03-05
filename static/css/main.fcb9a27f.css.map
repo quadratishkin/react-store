@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.fcb9a27f.css","mappings":"AAAA,KACE,0BAA0C,CAG1C,iBAAwB,CAFxB,4BAA8B,CAC9B,eAEF","sources":["index.css"],"sourcesContent":["body {\r\n  background-color: rgba(255, 228, 196, 0.3);\r\n  font-family: Inter, sans-serif;\r\n  font-weight: 300;\r\n  caret-color: transparent;\r\n}\r\n"],"names":[],"sourceRoot":""}
