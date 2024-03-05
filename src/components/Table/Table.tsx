@@ -6,9 +6,11 @@ import { filterBrand, filterName, filterPrice } from "./Table.requests";
 import {
   ErrorElem,
   StyledButtons,
+  StyledContainer,
   StyledField,
   StyledFilterBlock,
   StyledInput,
+  StyledPageNumber,
   StyledTableButton,
   StyledTableButtonSelect,
   StyledTableWrapper,
@@ -29,6 +31,7 @@ const Table = () => {
     changeItems,
     forwardMove,
     backwardMove,
+    handelPageNumberClick,
     windowwidth,
   } = useStore();
   const handleClick = () => {
@@ -100,6 +103,20 @@ const Table = () => {
         >
           назад
         </StyledTableButton>
+        <StyledContainer>
+          {items.map((item, index) => [
+            index % 50 === 0 && (
+              <StyledPageNumber
+                onClick={() => handelPageNumberClick(Math.floor(index / 50))}
+                isCurrentPage={index === currentValue}
+                key={index}
+              >
+                {Math.floor(index / 50) + 1}
+              </StyledPageNumber>
+            ),
+          ])}
+        </StyledContainer>
+
         <StyledTableButton
           onClick={forwardMove}
           currentvalue={currentValue}

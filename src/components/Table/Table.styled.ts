@@ -26,6 +26,27 @@ export const StyledField = styled.div`
   flex-wrap: wrap;
 `;
 
+export const StyledContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const StyledPageNumber = styled.button<{ isCurrentPage: boolean }>`
+  width: 60px;
+  gap: 5px;
+  background-color: transparent;
+  border: ${({ isCurrentPage }) =>
+    isCurrentPage ? "2px solid black" : "none"};
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    background-color: rgb(205 190 172 / 30%);
+  }
+`;
+
 export const StyledButtons = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,6 +69,7 @@ export const StyledTableButtonSelect = styled.select`
 `;
 
 export const StyledInput = styled.input`
+  caret-color: auto;
   width: 245px;
   height: 45px;
   font-size: 14px;
@@ -59,7 +81,7 @@ export const StyledTableButton = styled.button<{
 }>`
   background-color: white;
   font-size: 30px;
-  width: 250px;
+  width: 300px;
   height: 50px;
   cursor: ${({ buttontype, currentvalue }) =>
     getCursor(buttontype, currentvalue)};

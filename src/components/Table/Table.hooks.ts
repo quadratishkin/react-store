@@ -20,6 +20,9 @@ export const useStore = () => {
     }
     setCurrentValue(currentValue - PAGE_STEP);
   };
+  const handelPageNumberClick = (index: number) => {
+    setCurrentValue(index * PAGE_STEP);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,6 +44,7 @@ export const useStore = () => {
     changeItems,
     forwardMove,
     backwardMove,
+    handelPageNumberClick,
     windowwidth,
   };
 };

@@ -1,7 +1,7 @@
 import Table from "./components/table/Table";
 
 function App() {
-  return <Table/>;
+  return <Table />;
 }
 
 export default App;
