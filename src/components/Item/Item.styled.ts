@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const StyledItemWrapper = styled.div`
-  background-color: #74e6ef94;
+  background-color: rgb(164 121 228 / 58%);
   border-radius: 10px;
   min-width: 200px;
   padding: 10px;
   flex-basis: 15%;
   display: flex;
   gap: 15px;
+  justify-content: space-between;
   flex-direction: column;
   border: 1px solid black;
 `;
