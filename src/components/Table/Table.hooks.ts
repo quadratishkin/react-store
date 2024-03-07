@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { INITIAL_ITEMS, PAGE_STEP } from "./Table.constansts";
 import { end, getInitialItems } from "./Table.requests";
 
+
 export const useStore = () => {
   const [currentValue, setCurrentValue] = useState(0);
   const [items, changeItems] = useState(INITIAL_ITEMS);

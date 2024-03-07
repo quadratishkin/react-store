@@ -1,4 +1,4 @@
-import Item from "../item/Item";
+import Item from "../Item/Item";
 import { PAGE_STEP } from "./Table.constansts";
 
 import { useFilter, useStore } from "./Table.hooks";
@@ -105,13 +105,15 @@ const Table = () => {
         </StyledTableButton>
         <StyledContainer>
           {items.map((item, index) => [
-            index % 50 === 0 && (
+            index % PAGE_STEP === 0 && (
               <StyledPageNumber
-                onClick={() => handelPageNumberClick(Math.floor(index / 50))}
+                onClick={() =>
+                  handelPageNumberClick(Math.floor(index / PAGE_STEP))
+                }
                 iscurrentpage={(index === currentValue).toString()}
                 key={index}
               >
-                {Math.floor(index / 50) + 1}
+                {Math.floor(index / PAGE_STEP) + 1}
               </StyledPageNumber>
             ),
           ])}

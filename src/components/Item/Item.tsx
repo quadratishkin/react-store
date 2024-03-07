@@ -1,4 +1,4 @@
-import Price from "../price/Price";
+import Price from "../Price/Price";
 import {
   StyledBrand,
   StyledCircleWrapper,

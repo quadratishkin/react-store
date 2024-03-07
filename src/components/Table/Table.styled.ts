@@ -6,10 +6,10 @@ export const StyledTableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-inline: 10%;
+  margin-inline: 5%;
   padding-block-end: 70px;
   color: black;
-  width: 80%;
+  width: 90%;
 `;
 
 export const StyledFilterBlock = styled.div<{ windowwidth: number }>`
@@ -21,7 +21,7 @@ export const StyledFilterBlock = styled.div<{ windowwidth: number }>`
 
 export const StyledField = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 `;
@@ -50,6 +50,7 @@ export const StyledPageNumber = styled.button<{ iscurrentpage: string }>`
 export const StyledButtons = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 `;
 
 export const ErrorElem = styled.div`
@@ -81,7 +82,8 @@ export const StyledTableButton = styled.button<{
 }>`
   background-color: white;
   font-size: 30px;
-  width: 300px;
+  min-width: 150px;
+  max-width: 250px;
   height: 50px;
   cursor: ${({ buttontype, currentvalue }) =>
     getCursor(buttontype, currentvalue)};
