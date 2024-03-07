@@ -31,7 +31,11 @@ const deleteDublicates = (array: RequestItem[]) => {
   return result;
 };
 
-export const filterPrice = ({ filterString, changeItems }: Request) => {
+export const filterPrice = ({
+  filterString,
+  changeItems,
+  setCurrentValueToZero,
+}: Request) => {
   let tryNumber = 0;
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -50,7 +54,7 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems });
+        getFields({ changeItems, setCurrentValueToZero });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -64,7 +68,11 @@ export const filterPrice = ({ filterString, changeItems }: Request) => {
   request();
 };
 
-export const filterName = ({ filterString, changeItems }: Request) => {
+export const filterName = ({
+  filterString,
+  changeItems,
+  setCurrentValueToZero,
+}: Request) => {
   let tryNumber = 0;
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -83,7 +91,7 @@ export const filterName = ({ filterString, changeItems }: Request) => {
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems });
+        getFields({ changeItems, setCurrentValueToZero });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -97,7 +105,11 @@ export const filterName = ({ filterString, changeItems }: Request) => {
   request();
 };
 
-export const filterBrand = ({ filterString, changeItems }: Request) => {
+export const filterBrand = ({
+  filterString,
+  changeItems,
+  setCurrentValueToZero,
+}: Request) => {
   let tryNumber = 0;
 
   const request = () => {
@@ -117,7 +129,7 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems });
+        getFields({ changeItems, setCurrentValueToZero });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -131,7 +143,10 @@ export const filterBrand = ({ filterString, changeItems }: Request) => {
   request();
 };
 
-export const getInitialItems = ({ changeItems }: Request) => {
+export const getInitialItems = ({
+  changeItems,
+  setCurrentValueToZero,
+}: Request) => {
   let tryNumber = 0;
 
   const request = () => {
@@ -152,7 +167,7 @@ export const getInitialItems = ({ changeItems }: Request) => {
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems });
+        getFields({ changeItems, setCurrentValueToZero });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -166,7 +181,7 @@ export const getInitialItems = ({ changeItems }: Request) => {
   request();
 };
 
-export const getFields = ({ changeItems }: Request) => {
+export const getFields = ({ changeItems, setCurrentValueToZero }: Request) => {
   let tryNumber = 0;
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -185,6 +200,7 @@ export const getFields = ({ changeItems }: Request) => {
       },
     })
       .then(function (response) {
+        setCurrentValueToZero();
         const result = deleteDublicates(response.data.result);
         end = result.length;
         changeItems(result);

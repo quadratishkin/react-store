@@ -29,6 +29,7 @@ const Table = () => {
     currentValue,
     items,
     changeItems,
+    setCurrentValueToZero,
     forwardMove,
     backwardMove,
     handelPageNumberClick,
@@ -38,11 +39,11 @@ const Table = () => {
     switch (selectedOption) {
       case "brand":
         setIsError(false);
-        filterBrand({ filterString, changeItems });
+        filterBrand({ filterString, changeItems, setCurrentValueToZero });
         break;
       case "product":
         setIsError(false);
-        filterName({ filterString, changeItems });
+        filterName({ filterString, changeItems, setCurrentValueToZero });
         break;
       default:
         if (isNaN(Number(filterString)) || filterString === "") {
@@ -50,7 +51,7 @@ const Table = () => {
           return;
         }
         setIsError(false);
-        filterPrice({ filterString, changeItems });
+        filterPrice({ filterString, changeItems, setCurrentValueToZero });
         break;
     }
   };

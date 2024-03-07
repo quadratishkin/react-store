@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { INITIAL_ITEMS, PAGE_STEP } from "./Table.constansts";
 import { end, getInitialItems } from "./Table.requests";
 
-
 export const useStore = () => {
   const [currentValue, setCurrentValue] = useState(0);
   const [items, changeItems] = useState(INITIAL_ITEMS);
@@ -25,6 +24,10 @@ export const useStore = () => {
     setCurrentValue(index * PAGE_STEP);
   };
 
+  const setCurrentValueToZero = () => {
+    setCurrentValue(0);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -32,7 +35,7 @@ export const useStore = () => {
 
     window.addEventListener("resize", handleResize);
 
-    getInitialItems({ changeItems });
+    getInitialItems({ changeItems, setCurrentValueToZero });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -43,6 +46,7 @@ export const useStore = () => {
     currentValue,
     items,
     changeItems,
+    setCurrentValueToZero,
     forwardMove,
     backwardMove,
     handelPageNumberClick,
