@@ -95,7 +95,7 @@ const Table = () => {
           ),
         ])}
       </StyledField>
-      <StyledButtons>
+      <StyledButtons windowwidth={windowwidth}>
         <StyledTableButton
           onClick={backwardMove}
           currentvalue={currentValue}

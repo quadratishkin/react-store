@@ -47,9 +47,12 @@ export const StyledPageNumber = styled.button<{ iscurrentpage: string }>`
   }
 `;
 
-export const StyledButtons = styled.div`
+export const StyledButtons = styled.div<{ windowwidth: number }>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: ${({ windowwidth }) =>
+    windowwidth < 500 ? "column" : "row"};
   gap: 30px;
 `;
 
