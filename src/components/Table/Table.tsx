@@ -10,6 +10,7 @@ import {
   StyledField,
   StyledFilterBlock,
   StyledInput,
+  StyledLoader,
   StyledPageNumber,
   StyledTableButton,
   StyledTableButtonSelect,
@@ -25,9 +26,12 @@ const Table = () => {
     selectedOption,
     selectChange,
   } = useFilter();
+
   const {
     currentValue,
     items,
+    isLoading,
+    setIsLoading,
     changeItems,
     setCurrentValueToZero,
     forwardMove,
@@ -35,23 +39,41 @@ const Table = () => {
     handelPageNumberClick,
     windowwidth,
   } = useStore();
+
   const handleClick = () => {
     switch (selectedOption) {
       case "brand":
         setIsError(false);
-        filterBrand({ filterString, changeItems, setCurrentValueToZero });
+        filterBrand({
+          filterString,
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+        });
         break;
+
       case "product":
         setIsError(false);
-        filterName({ filterString, changeItems, setCurrentValueToZero });
+        filterName({
+          filterString,
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+        });
         break;
+
       default:
         if (isNaN(Number(filterString)) || filterString === "") {
           setIsError(true);
           return;
         }
         setIsError(false);
-        filterPrice({ filterString, changeItems, setCurrentValueToZero });
+        filterPrice({
+          filterString,
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+        });
         break;
     }
   };
@@ -81,7 +103,9 @@ const Table = () => {
         </StyledTableButton>
       </StyledFilterBlock>
 
-      {isError && <ErrorElem>Введённое значение не коректно</ErrorElem>}
+      {isLoading && <StyledLoader />}
+
+      {isError && <ErrorElem>Введённое значение не корректно</ErrorElem>}
       {items.length === 0 && <ErrorElem>Ничего не найдено</ErrorElem>}
       <StyledField>
         {items.map((item, index) => [
