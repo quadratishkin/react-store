@@ -1,27 +1,28 @@
 import styled from "styled-components";
 
 export const StyledItemWrapper = styled.div`
-  background-color: rgb(164 121 228 / 58%);
+  background-color: #90f2ff;
   border-radius: 10px;
   min-width: 200px;
+  height: 220px;
   padding: 10px;
   flex-basis: 15%;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid black;
 `;
 
 export const StyledCircleWrapper = styled.div`
-  background-color: #fb780ca1;
+  background-color: #7098da;
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
-  border: 1px solid #fb780ca1;
+  border: 1px solid #7098da;
   color: white;
   text-align: center;
   font-size: 20px;

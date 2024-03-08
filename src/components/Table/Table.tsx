@@ -30,6 +30,8 @@ const Table = () => {
   const {
     currentValue,
     items,
+    isNotFound,
+    setIsNotFound,
     isLoading,
     setIsLoading,
     changeItems,
@@ -41,6 +43,7 @@ const Table = () => {
   } = useStore();
 
   const handleClick = () => {
+    setIsNotFound(false);
     switch (selectedOption) {
       case "brand":
         setIsError(false);
@@ -49,6 +52,7 @@ const Table = () => {
           changeItems,
           setCurrentValueToZero,
           setIsLoading,
+          setIsNotFound,
         });
         break;
 
@@ -59,6 +63,7 @@ const Table = () => {
           changeItems,
           setCurrentValueToZero,
           setIsLoading,
+          setIsNotFound,
         });
         break;
 
@@ -73,6 +78,7 @@ const Table = () => {
           changeItems,
           setCurrentValueToZero,
           setIsLoading,
+          setIsNotFound,
         });
         break;
     }
@@ -106,7 +112,7 @@ const Table = () => {
       {isLoading && <StyledLoader />}
 
       {isError && <ErrorElem>Введённое значение не корректно</ErrorElem>}
-      {items.length === 0 && <ErrorElem>Ничего не найдено</ErrorElem>}
+      {isNotFound && <ErrorElem>Ничего не найдено</ErrorElem>}
       <StyledField>
         {items.map((item, index) => [
           index >= currentValue && index < currentValue + PAGE_STEP && (

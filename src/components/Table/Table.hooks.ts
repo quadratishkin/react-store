@@ -8,6 +8,7 @@ export const useStore = () => {
   const [items, changeItems] = useState<RequestItem[]>([]);
   const [windowwidth, setWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const forwardMove = () => {
     if (currentValue >= end - PAGE_STEP) {
@@ -37,7 +38,7 @@ export const useStore = () => {
 
     window.addEventListener("resize", handleResize);
 
-    getInitialItems({ changeItems, setCurrentValueToZero, setIsLoading });
+    getInitialItems({ changeItems, setCurrentValueToZero, setIsLoading, setIsNotFound });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -47,6 +48,8 @@ export const useStore = () => {
   return {
     currentValue,
     items,
+    isNotFound,
+    setIsNotFound,
     isLoading,
     setIsLoading,
     changeItems,

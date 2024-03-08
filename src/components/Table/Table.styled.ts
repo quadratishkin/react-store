@@ -6,10 +6,10 @@ export const StyledTableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-inline: 5%;
+  margin-inline: 3%;
   padding-block-end: 70px;
   color: black;
-  width: 90%;
+  width: 94%;
 `;
 
 export const StyledFilterBlock = styled.div<{ windowwidth: number }>`
@@ -64,7 +64,7 @@ export const StyledPageNumber = styled.button<{ iscurrentpage: string }>`
   cursor: pointer;
   opacity: 0.8;
   &:hover {
-    background-color: rgb(205 190 172 / 30%);
+    background-color: rgb(45 195 207 / 43%);
   }
 `;
 
@@ -89,7 +89,7 @@ export const StyledTableButtonSelect = styled.select`
   height: 50px;
   cursor: pointer;
   &:hover {
-    background-color: lightgray;
+    background-color: rgb(45 195 207 / 43%);
   }
 `;
 

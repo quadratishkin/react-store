@@ -36,8 +36,10 @@ export const filterPrice = ({
   changeItems,
   setCurrentValueToZero,
   setIsLoading,
+  setIsNotFound,
 }: Request) => {
   setIsLoading(true);
+  changeItems([]);
   let tryNumber = 0;
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -56,7 +58,12 @@ export const filterPrice = ({
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems, setCurrentValueToZero, setIsLoading });
+        getFields({
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+          setIsNotFound,
+        });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -76,8 +83,10 @@ export const filterName = ({
   changeItems,
   setCurrentValueToZero,
   setIsLoading,
+  setIsNotFound,
 }: Request) => {
   setIsLoading(true);
+  changeItems([]);
   let tryNumber = 0;
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -96,7 +105,12 @@ export const filterName = ({
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems, setCurrentValueToZero, setIsLoading });
+        getFields({
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+          setIsNotFound,
+        });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -116,9 +130,11 @@ export const filterBrand = ({
   changeItems,
   setCurrentValueToZero,
   setIsLoading,
+  setIsNotFound,
 }: Request) => {
   let tryNumber = 0;
   setIsLoading(true);
+  changeItems([]);
 
   const request = () => {
     const now = new Date().toISOString().split("T")[0];
@@ -137,7 +153,12 @@ export const filterBrand = ({
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems, setCurrentValueToZero, setIsLoading });
+        getFields({
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+          setIsNotFound,
+        });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -156,8 +177,10 @@ export const getInitialItems = ({
   changeItems,
   setCurrentValueToZero,
   setIsLoading,
+  setIsNotFound,
 }: Request) => {
   setIsLoading(true);
+  changeItems([]);
   let tryNumber = 0;
 
   const request = () => {
@@ -178,7 +201,13 @@ export const getInitialItems = ({
     })
       .then(function (response) {
         items = response.data.result;
-        getFields({ changeItems, setCurrentValueToZero, setIsLoading });
+        setIsLoading(false);
+        getFields({
+          changeItems,
+          setCurrentValueToZero,
+          setIsLoading,
+          setIsNotFound,
+        });
       })
       .catch(function (error) {
         if (tryNumber === 3) {
@@ -197,6 +226,7 @@ export const getFields = ({
   changeItems,
   setCurrentValueToZero,
   setIsLoading,
+  setIsNotFound,
 }: Request) => {
   setIsLoading(true);
   let tryNumber = 0;
@@ -220,6 +250,9 @@ export const getFields = ({
         setCurrentValueToZero();
         const result = deleteDublicates(response.data.result);
         end = result.length;
+        if (items.length === 0) {
+          setIsNotFound(true);
+        }
         changeItems(result);
         setIsLoading(false);
       })

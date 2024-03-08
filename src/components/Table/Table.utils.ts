@@ -10,7 +10,7 @@ export const getHoverBackground = (
       (currentValue >= end - PAGE_STEP && buttonType === "forward"):
       return "white";
     default:
-      return "lightgray";
+      return "rgb(45 195 207 / 43%);";
   }
 };
 

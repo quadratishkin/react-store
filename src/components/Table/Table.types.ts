@@ -10,4 +10,5 @@ export interface Request {
   changeItems: React.Dispatch<React.SetStateAction<RequestItem[]>>;
   setCurrentValueToZero: () => void;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsNotFound: React.Dispatch<React.SetStateAction<boolean>>;
 }
