@@ -4,7 +4,6 @@ export const StyledItemWrapper = styled.div`
   background-color: #90f2ff;
   border-radius: 10px;
   min-width: 200px;
-  height: 220px;
   padding: 10px;
   flex-basis: 15%;
   display: flex;
